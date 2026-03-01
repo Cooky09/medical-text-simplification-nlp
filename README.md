@@ -1,7 +1,21 @@
-# Medical Text Simplification using Transformer Models
+# Text Simplification using Transformer Models (BART, T5, PEGASUS)
 
-This project compares BART, T5, and PEGASUS for medical text simplification.
+## Overview
+This project provides a **research-grade pipeline** for simplifying complex English text into simpler, more readable sentences using modern transformer-based sequence-to-sequence models.  
+It is designed to be clean, modular, and reproducible, making it suitable for academic research, thesis work, or production experimentation.
 
-Models are fine-tuned on parallel medical text pairs and evaluated using BLEU, METEOR, BERTScore, and readability metrics.
+Supported models:
+- **BART** (`facebook/bart-base`)
+- **T5** (`t5-small`)
+- **PEGASUS** (`google/pegasus-xsum`)
 
-Project currently under restructuring from research notebook to modular pipeline.
+The project performs:
+- Text preprocessing (tokenization, stopword removal, lemmatization)
+- Dataset loading of aligned complex-simple text
+- Model training with configurable hyperparameters
+- Evaluation using BLEU, METEOR, BERTScore, and readability metrics
+- Saving results with original, target, and generated texts
+
+---
+
+## Project Structure
