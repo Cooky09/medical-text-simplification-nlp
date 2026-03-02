@@ -1,66 +1,109 @@
-# Text Simplification using Transformer Models (BART, T5, PEGASUS)
+# Medical Text Simplification NLP
 
-📌 Project Overview
-Medical jargon and complex clinical terminology often create a barrier between healthcare providers and patients. This project leverages Natural Language Processing (NLP) to automatically simplify technical medical texts into "layman’s terms" without losing the original clinical meaning.
+Automatically simplifies complex medical text into easier-to-understand language using modern NLP models.
 
-The goal is to improve health literacy by transforming professional medical abstracts (from sources like PubMed or Cochrane) into easy-to-read sentences for patients.
+Medical jargon and clinical terminology can be difficult for patients and non-experts to understand. This project builds a modular pipeline to fine-tune and evaluate transformer models (BART, T5, PEGASUS) for medical text simplification with reliable evaluation metrics.
 
-🚀 Features
-Technical-to-Simple Translation: Converts complex medical sentences into plain English.
+---
 
-Jargon Identification: (If applicable) Highlights difficult terms and replaces them with synonyms.
+## 🚀 Features
 
-Evaluation Pipeline: Includes scripts to calculate SARI, BLEU, and ROUGE scores to measure simplification quality.
+- **Preprocessing:** Tokenization, stop word removal, and lemmatization for clean input.
+- **Flexible Dataset Loader:** Loads parallel complex–simple text pairs.
+- **Multi-Model Training:** Train BART, T5, or PEGASUS models with a unified training script.
+- **Evaluation Metrics:** BLEU, METEOR, BERTScore, and Flesch Reading Ease.
+- **Detailed Results:** CSV outputs include original text, target simplified text, and generated simplifications.
+- **Research-Ready:** Clean architecture with reproducible experiments and metric tracking.
 
-Fine-tuned Models: Implementation of state-of-the-art architectures like T5-Base, BART-Large, or BioGPT.
+---
 
-📂 Project Structure
+## 📁 Project Structure
 
-├── data/                   # Raw and preprocessed datasets
-├── models/                 # Saved model checkpoints and weights
-├── notebooks/              # Jupyter notebooks for EDA and testing
+
+.
+├── data/ # Complex and simplified text files
+├── models/ # Saved model checkpoints
+├── results/ # Evaluation results CSVs
 ├── src/
-│   ├── preprocess.py       # Data cleaning and tokenization
-│   ├── train.py            # Training and fine-tuning scripts
-│   └── evaluate.py         # Metrics calculation (SARI, BLEU, etc.)
-├── requirements.txt        # Project dependencies
-└── README.md
+│ ├── preprocessing.py # Text cleaning and lemmatization
+│ ├── dataset.py # Dataset loading
+│ ├── config.py # Model & hyperparameter config
+│ ├── train.py # Multi-model training script
+│ ├── metrics.py # Evaluation metric functions
+│ └── evaluate.py # Model evaluation & CSV export
+├── notebooks/ # Optional EDA & testing notebooks
+└── requirements.txt # Python dependencies
 
 
-🛠️ Installation
-Clone the repository:
+---
 
-Bash
+## 🧠 Installation
+
+Clone the repo and install dependencies:
+
+```bash
 git clone https://github.com/Cooky09/medical-text-simplification-nlp.git
 cd medical-text-simplification-nlp
-Create a virtual environment:
-
-Bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies:
-
-Bash
 pip install -r requirements.txt
-📊 Dataset
-This project uses the following datasets for training and validation:
 
-[Dataset Name, e.g., MedSiML or Cochrane]: Contains over XX,XXX pairs of original vs. simplified medical sentences.
+Make sure you have PyTorch, Transformers, and NLTK installed.
 
-Preprocessing: We apply lowercasing, removal of special characters, and length filtering to ensure high-quality training pairs.
+📌 Prepare Your Dataset
 
-🧪 Usage
-1. Training the Model
-To start fine-tuning the model on your dataset:
+Place aligned parallel text in:
 
-Bash
-python src/train.py --model_name "t5-small" --epochs 3 --batch_size 8
-2. Inference (Simplifying Text)
-Use the following script to simplify a custom sentence:
+data/complex_text.txt
 
-Python
-from src.predict import simplifier
+data/simple_text.txt
 
-text = "The patient presents with acute myocardial infarction and secondary tachycardia."
-result = simplifier.simplify(text)
-print(result) # Output: The patient is having a heart attack and a fast heartbeat.
+Each line in the simple file must correspond to the same line in the complex file.
+
+🎯 Training
+
+Train any supported model with:
+
+cd src
+python train.py --model bart
+python train.py --model t5
+python train.py --model pegasus
+
+Training parameters are controlled via src/config.py.
+
+📊 Evaluation
+
+Evaluate a trained model:
+
+python evaluate.py --model bart
+
+Evaluation produces a CSV in results/ with:
+
+| original_text | target_text | generated_text | BLEU | METEOR | BERTScore_F1 | Readability |
+
+This makes comparisons easy and suitable for research reporting.
+
+📈 Supported Models
+Model	Description
+BART	Encoder–decoder model good for text generation
+T5	Text-to-Text model for sequence tasks
+PEGASUS	Optimized for summarization and simplification
+📚 Evaluation Metrics Explained
+
+BLEU: Measures overlap between generated and reference text.
+
+METEOR: Accounts for synonyms and paraphrasing.
+
+BERTScore: Semantic similarity using contextual embeddings.
+
+Readability: Flesch Reading Ease for simple text readability.
+
+🧪 Example Workflow
+
+Prepare your dataset.
+
+Train your model (e.g., BART).
+
+Evaluate and review output CSV in results/.
+
+📝 Notes
+
+This repository is designed for research and experimentation in medical NLP, focusing on accessibility and health literacy by transforming technical text into layman-friendly language.
