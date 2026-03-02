@@ -15,7 +15,7 @@ Evaluation Pipeline: Includes scripts to calculate SARI, BLEU, and ROUGE scores 
 Fine-tuned Models: Implementation of state-of-the-art architectures like T5-Base, BART-Large, or BioGPT.
 
 📂 Project Structure
-Plaintext
+
 ├── data/                   # Raw and preprocessed datasets
 ├── models/                 # Saved model checkpoints and weights
 ├── notebooks/              # Jupyter notebooks for EDA and testing
@@ -25,6 +25,8 @@ Plaintext
 │   └── evaluate.py         # Metrics calculation (SARI, BLEU, etc.)
 ├── requirements.txt        # Project dependencies
 └── README.md
+
+
 🛠️ Installation
 Clone the repository:
 
