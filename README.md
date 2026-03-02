@@ -15,25 +15,6 @@ Medical jargon and clinical terminology can be difficult for patients and non-ex
 - **Detailed Results:** CSV outputs include original text, target simplified text, and generated simplifications.
 - **Research-Ready:** Clean architecture with reproducible experiments and metric tracking.
 
----
-
-## 📁 Project Structure
-
-
-.
-├── data/ # Complex and simplified text files
-├── models/ # Saved model checkpoints
-├── results/ # Evaluation results CSVs
-├── src/
-│ ├── preprocessing.py # Text cleaning and lemmatization
-│ ├── dataset.py # Dataset loading
-│ ├── config.py # Model & hyperparameter config
-│ ├── train.py # Multi-model training script
-│ ├── metrics.py # Evaluation metric functions
-│ └── evaluate.py # Model evaluation & CSV export
-├── notebooks/ # Optional EDA & testing notebooks
-└── requirements.txt # Python dependencies
-
 
 ---
 
