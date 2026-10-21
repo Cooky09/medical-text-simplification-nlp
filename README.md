@@ -552,6 +552,8 @@ The generated simplified medical text may contain errors, omissions, or inaccura
 Always consult a qualified healthcare professional for medical advice.
 
 ---
+**NOTE**
+Trained model weights are not included in this repository because of their large file size. The repository contains the training, evaluation, preprocessing, and prediction code.
 
 ## Author
 
