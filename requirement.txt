@@ -1,0 +1,11 @@
+torch
+transformers
+datasets
+evaluate
+nltk
+pandas
+numpy
+scikit-learn
+bert-score
+textstat
+matplotlib
